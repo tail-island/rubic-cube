@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>最良優先探索と深層学習でルービックキューブを解いてみた</title>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/roofpig_and_three.min.js"></script>
+  </head>
+  <body>
+    <form id="form">
+      <p>
+        Question:<br>
+        <input type="text" name="question" style="width: 960px">
+      </p>
+      <p>
+        Answer:<br>
+        <input type="text" name="answer"   style="width: 960px">
+      </p>
+      <p>
+        <input type="submit" value="表示する">
+      </p>
+    </form>
+
+    <p>
+      <div id="question" style="width: 480px; height: 480px; display: inline-block;"></div>
+      <div id="answer"   style="width: 480px; height: 480px; display: inline-block;"></div>
+    </p>
+
+    <script>
+      document.getElementById('form').addEventListener('submit', function(event) {
+        CubeAnimation.create_in_dom('#question', 'setupmoves=' + event.target.question.value, "class='roofpig'");
+        CubeAnimation.create_in_dom('#answer', 'alg=' + event.target.answer.value, "class='roofpig'");
+
+        event.stopPropagation();
+        event.preventDefault();
+      });
+    </script>
+  </body>
+</html>
